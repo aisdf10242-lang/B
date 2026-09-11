@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090b18" />
+    <meta
+      name="description"
+      content="생일을 맞아 함께한 순간과 마음을 담은 작은 영화 같은 페이지"
+    />
+    <title>우리의 생일 영화</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23090b18'/%3E%3Cpath d='M32 50S12 39 12 24c0-10 12-14 20-4 8-10 20-6 20 4 0 15-20 26-20 26Z' fill='%23ef668f'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./content.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="film-grain" aria-hidden="true"></div>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+
+    <button class="sound-button" type="button" aria-label="배경음악 켜기" hidden>
+      <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="sound-label">music</span>
+    </button>
+
+    <section class="opening" aria-labelledby="opening-title">
+      <div class="opening-light" aria-hidden="true"></div>
+      <p class="eyebrow" id="birthday-label">HAPPY BIRTHDAY</p>
+      <h1 id="opening-title"><span id="hero-name">사랑하는 너에게</span></h1>
+      <p class="opening-copy" id="hero-message">오늘, 너에게 보여주고 싶은 우리의 장면들</p>
+      <button class="start-button" type="button">
+        <span>우리의 이야기 열기</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9 5 7 7-7 7" />
+        </svg>
+      </button>
+      <p class="sound-hint">소리와 함께 보면 더 좋아</p>
+    </section>
+
+    <main id="story" inert>
+      <section class="hero-frame chapter" aria-labelledby="story-title">
+        <div class="hero-frame__content reveal">
+          <p class="chapter-number">CHAPTER 01</p>
+          <h2 id="story-title">우리라는<br />영화의 장면들</h2>
+          <p id="story-intro">
+            평범했던 날들도 너와 함께라서 오래 기억하고 싶은 장면이 됐어.
+          </p>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL</div>
+      </section>
+
+      <section class="memories chapter" aria-labelledby="memories-title">
+        <header class="section-heading reveal">
+          <p class="chapter-number">CHAPTER 02</p>
+          <h2 id="memories-title">함께 모은 순간</h2>
+          <p>사진을 누르면 조금 더 천천히 볼 수 있어.</p>
+        </header>
+        <div class="memory-list" id="memory-list"></div>
+      </section>
+
+      <section class="video-chapter chapter" aria-labelledby="video-title">
+        <header class="section-heading reveal">
+          <p class="chapter-number">CHAPTER 03</p>
+          <h2 id="video-title">움직이는 기억</h2>
+          <p id="video-intro">사진만으로는 다 담기지 않았던 우리의 한 장면.</p>
+        </header>
+        <div class="video-wrap reveal" id="video-wrap"></div>
+      </section>
+
+      <section class="letter-chapter chapter" aria-labelledby="letter-title">
+        <div class="letter-stage reveal">
+          <div class="letter-heading">
+            <p class="chapter-number">FINAL CHAPTER</p>
+            <h2 id="letter-title">마지막은,<br />너에게 보내는 편지</h2>
+          </div>
+          <button class="letter-button" type="button" aria-expanded="false" aria-controls="letter-paper">
+            <span class="seal" aria-hidden="true">♥</span>
+            <span>편지 열어보기</span>
+          </button>
+          <article class="letter-paper" id="letter-paper" hidden>
+            <p class="letter-to" id="letter-to"></p>
+            <div id="letter-body"></div>
+            <p class="letter-from" id="letter-from"></p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="ending chapter">
+        <p class="ending-small">THE STORY CONTINUES</p>
+        <p class="ending-title" id="ending-title">생일 정말 축하해.</p>
+        <p class="ending-date" id="ending-date"></p>
+        <button class="replay-button" type="button">처음부터 다시 보기</button>
+      </footer>
+    </main>
+
+    <dialog class="photo-dialog" aria-label="사진 크게 보기">
+      <button class="dialog-close" type="button" aria-label="사진 닫기">×</button>
+      <img src="" alt="" />
+      <div class="dialog-copy">
+        <p class="dialog-date"></p>
+        <p class="dialog-caption"></p>
+      </div>
+    </dialog>
+
+    <audio id="background-music" loop preload="metadata"></audio>
+  </body>
+</html>
