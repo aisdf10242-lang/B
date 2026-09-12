@@ -135,3 +135,29 @@ window.addEventListener(
   },
   { passive: true }
 );
+
+if (document.documentElement.classList.contains("gate-active")) {
+  const cdEls = {
+    days: document.querySelector("#cd-days"),
+    hours: document.querySelector("#cd-hours"),
+    minutes: document.querySelector("#cd-minutes"),
+    seconds: document.querySelector("#cd-seconds"),
+  };
+
+  const tick = () => {
+    const diff = window.__GATE_TARGET__ - Date.now();
+    if (diff <= 0) {
+      document.documentElement.classList.remove("gate-active");
+      clearInterval(countdownTimer);
+      return;
+    }
+    const totalSeconds = Math.floor(diff / 1000);
+    cdEls.days.textContent = String(Math.floor(totalSeconds / 86400)).padStart(2, "0");
+    cdEls.hours.textContent = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, "0");
+    cdEls.minutes.textContent = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+    cdEls.seconds.textContent = String(totalSeconds % 60).padStart(2, "0");
+  };
+
+  tick();
+  const countdownTimer = setInterval(tick, 1000);
+}
