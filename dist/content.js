@@ -1,6 +1,6 @@
 /*
   여기만 수정하면 페이지의 글과 파일을 바꿀 수 있습니다.
-  사진은 assets/photos, 영상은 assets/video, 음악은 assets/music 폴더에 넣으세요.
+  사진은 assets/photos, 영상은 assets/video 폴더에 넣으세요.
 */
 window.BIRTHDAY_CONTENT = {
   recipient: "사랑하는 너에게",
@@ -9,8 +9,6 @@ window.BIRTHDAY_CONTENT = {
   storyIntro: "평범했던 날들도 너와 함께라서 오래 기억하고 싶은 장면이 됐어.",
   birthdayDate: "2026. 00. 00",
   endingTitle: "생일 정말 축하해.",
-
-  music: "./assets/music/our-song.mp3",
 
   photos: [
     {
