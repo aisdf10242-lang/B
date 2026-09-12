@@ -3,9 +3,6 @@ const content = window.BIRTHDAY_CONTENT;
 const opening = document.querySelector(".opening");
 const startButton = document.querySelector(".start-button");
 const story = document.querySelector("#story");
-const music = document.querySelector("#background-music");
-const soundButton = document.querySelector(".sound-button");
-const soundLabel = document.querySelector(".sound-label");
 const progressBar = document.querySelector(".reading-progress span");
 const memoryList = document.querySelector("#memory-list");
 const videoWrap = document.querySelector("#video-wrap");
@@ -28,7 +25,6 @@ setText("#letter-to", content.letter.to);
 setText("#letter-from", content.letter.from);
 
 document.title = `${content.recipient} — 생일 축하해`;
-music.src = content.music;
 
 content.letter.paragraphs.forEach((paragraph) => {
   const p = document.createElement("p");
@@ -93,45 +89,14 @@ video.src = content.video.src;
 video.poster = content.video.poster;
 video.addEventListener("loadedmetadata", () => videoPlaceholder.remove());
 video.addEventListener("error", () => video.remove());
-video.addEventListener("play", () => {
-  if (!music.paused) music.pause();
-  updateSoundButton();
-});
 videoWrap.append(videoPlaceholder, video);
 
-function updateSoundButton() {
-  const playing = !music.paused;
-  soundButton.classList.toggle("is-playing", playing);
-  soundButton.setAttribute("aria-label", playing ? "배경음악 끄기" : "배경음악 켜기");
-  soundLabel.textContent = playing ? "music on" : "music off";
-}
-
-async function playMusic() {
-  try {
-    await music.play();
-  } catch {
-    soundLabel.textContent = "add music";
-  }
-  updateSoundButton();
-}
-
-startButton.addEventListener("click", async () => {
+startButton.addEventListener("click", () => {
   document.body.classList.add("started");
   story.inert = false;
-  soundButton.hidden = false;
   opening.classList.add("is-gone");
-  await playMusic();
   window.setTimeout(() => document.querySelector("#story-title").focus?.(), 1000);
 });
-
-soundButton.addEventListener("click", () => {
-  if (music.paused) playMusic();
-  else music.pause();
-  updateSoundButton();
-});
-
-music.addEventListener("play", updateSoundButton);
-music.addEventListener("pause", updateSoundButton);
 
 document.querySelector(".letter-button").addEventListener("click", (event) => {
   const paper = document.querySelector("#letter-paper");
